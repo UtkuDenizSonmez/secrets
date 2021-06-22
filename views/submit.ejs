@@ -1,5 +1,20 @@
 <%- include('partials/header') %>
 
+<% if (userWithSecrets.secret != 0) { %>
+  <h1>Your Secrets</h1>
+  <form class="" action="/submit/delete" method="post">
+    <div class="form-group">
+      <select class="form-control text-center" name="secret">
+        <% userWithSecrets.forEach(function(secrets) { %>
+          <option value="<%= secrets.secret %>"><%= secrets.secret %></option>
+        <% }); %>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-dark">Delete Secret</button>
+  </form>
+<% } %>
+
+
 <div class="container">
   <div class="jumbotron centered">
     <i class="fas fa-key fa-6x"></i>
